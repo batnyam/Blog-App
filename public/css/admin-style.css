@@ -1,0 +1,183 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.container-fluid {
+	padding: 0;
+}
+
+.sidebar {
+	height: 100%;
+	float: left;
+	position: fixed;
+	left: 0;
+	background: #e74c3c;
+	padding: 0;
+}
+
+.logo {
+	padding: 20px 0 10px 0;
+	text-align: center;
+	font-weight: 700;
+	color: #FFF;
+	font-size: 1.5em;
+}
+
+.desc {
+	text-align: center;
+	font-size: 12px;
+	color: #ecf0f1;
+}
+
+.button-group {
+	float: left;
+	margin-top: 40px;
+}
+
+.button-group li {
+	list-style-type: none;
+	padding: 10px 0;
+	text-align: center;
+	color: #ecf0f1;
+}
+
+.button-group li:hover {
+	box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.4);
+	color: #FF998E;
+}
+
+.button-group a {
+	color: #ecf0f1;
+}
+
+.button-group a:hover, a:visited, a:active, a:link {
+	color: #FF998E;
+	text-decoration: none;
+}
+
+.navbar-bottom {
+	font-size: 20px;
+	text-align: right;
+	color: #fff;
+	position: absolute;
+	right: 0;
+	bottom: 20px;
+	float: left;
+}
+
+.navbar-bottom i:hover {
+	color: #c0392b;
+}
+
+/* Start Content Section */
+.content {
+	float: left;
+	padding: 0 20px;
+	height: auto;
+	margin-top: 20px;
+	font-size: 14px;
+}
+
+.content input {
+	margin-bottom: 10px;
+	float: left;
+}
+
+.content textarea {
+	float: left;
+	margin-top: 10px;
+	height: 300px;
+}
+
+button.picture {
+	background: #3498db;
+	color: #FFF;
+	font-size: 10px;
+}
+
+button.picture i {
+	margin-right: 5px;
+}
+
+.post-options {
+	padding: 0 10px;
+}
+
+.post-options span.title {
+	width: 100%;
+	float: left;
+	background: #ecf0f1;
+	padding: 10px;
+}
+
+.post-options select {
+	float: left;
+	margin-top: 10px;
+}
+
+.post-options input {
+	float: left;
+	margin-top: 10px;
+}
+
+.post-options .textar {
+	margin-top: 0;
+	height: 100px;
+}
+button.save {
+	float: right;
+	margin-top: 10px;
+}
+
+.content span.title {
+	background: #EFEFEF;
+	padding: 10px;
+	width: 100%;
+	float: left;
+}
+
+form.category {
+	padding: 10px 0;
+}
+
+.category textarea {
+	height: 100px;
+	margin: 0 0 10px 0;
+}
+
+.edit-category, .edit-users {
+	border: 1px solid #EFEFEF;
+	padding: 10px;
+	float: left;
+}
+
+.edit-category, .edit-users span.border {
+	width: 100%;
+	float: left;
+	height: 1px;
+	background: #EFEFEF;
+	margin: 10px 0;
+}
+
+.post-write, .post-options {
+	margin-top: 10px;
+	padding: 0;
+}
+
+.post-options {
+	padding-left: 10px;
+}
+
+.edit-users {
+	margin-top: 10px;
+}
+
+.edit-users select {
+	float: left;
+	margin-bottom: 10px;
+}

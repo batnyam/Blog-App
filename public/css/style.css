@@ -1,0 +1,277 @@
+/*
+Theme Name: Koding.com
+Theme URI: blog.u-media.mn
+Author: Koding.com 
+Author URI: www.koding.com
+Description: Copy blog.koding.com site theme. Copied by batnyam baasanjav
+*/
+
+/* General Style */
+
+body {
+	   margin: 0;
+	   padding: 0;
+	   background: #e4e4e4;
+	   text-decoration: none !important;
+	   font-family: 'Lato', sans-serif;
+	 }
+#container { 
+			 position: relative; 	
+	         height: 100%; 
+           }
+a:hover {
+	 	  text-decoration: none !important;
+		}
+.container_body {
+	              padding: 0 !important;
+				}
+
+
+/* Sidebar section */
+.sidebar {
+		   background: #1f2628 fixed;		
+		   height: 100%;
+		   float: left !important;
+		   display: block;
+		   position: fixed !important;
+		   color: #fff;
+		   padding-top: 30px;
+		   z-index: 10;
+		   width: 18% !important;
+		 }
+
+.inner {
+	     position: fixed;
+       }
+
+.logo {
+	    margin: 0 auto !important;
+	    float: none !important;
+	    
+	  }
+
+.logo img {
+	        border-radius: 250px; 
+		  }
+.logo-text {
+			margin: 0 auto !important;
+	    float: none !important;
+	    color: #fff;
+	    font-family: 'Squada One', cursive;
+	    font-size: 40px;
+	    text-align: center;
+	  	   }
+
+.logo-text:hover {
+	               color: #6B8FD4;
+				 }
+.slogan {
+		  color: #666 !important;
+		  font-family: 'Lato', sans-serif;
+		  text-align: center;
+		  font-size: 12px;
+		  margin-top: 20px !important;
+		}
+
+.seperator {
+	         background: #fff;
+	         height: 1px;
+	         margin: 10px auto !important;
+	         float: none !important;
+	         display: block;
+		   }
+
+.nav_menu {
+	        margin: 20px auto !important;
+	        float: none !important;
+	        display: block;
+	        margin-top: 100px !important;
+		  }
+
+.nav_menu ul li {
+	              list-style-type: none !important;
+	              text-align: center;
+	              padding: 10px;
+	              text-transform: uppercase;
+	              border-radius: 10px;
+	              color: #fff !important;
+			    }
+.nav_menu ul a:hover li {
+	                      background: #3F8FD2;
+	                      text-decoration: none !important;
+			      		}
+
+.nav_menu ul {
+	           margin: 0 !important;
+	           padding: 0 !important;
+			 }
+
+.search {
+	      margin: 10px 0 !important;
+	 	  outline: none !important;	
+		}
+
+.search input {
+	            color: #6B8FD4 !important;
+	            text-transform: uppercase;
+			  }
+
+.social {
+	      margin: 10px 0 !important; 	   
+	      height: auto;   
+		}
+
+.img {
+	   margin: 0 !important;
+	   padding: 2px !important;
+     }
+
+
+/* Content */
+.wrapper {
+	       height: auto;
+	       padding: 0 !important;
+	       float: right !important;
+		 }
+
+.content_wrapper {
+	               height: auto;
+	               margin: 20px auto !important;
+	               float: none !important;
+	               display: block;
+	               padding: 0 !important;
+				 }
+
+.entry {
+	     height: auto;
+	     background: #fff;
+	     border-radius: 10px;
+	     padding: 0 !important;
+	     padding-bottom: 10px !important;
+	     margin-bottom: 40px !important;
+	   }
+
+.date {
+	    background: #cecece;
+	    padding: 4px;
+	    border-top-left-radius: 10px;
+	    font-size: 20px;
+	    text-align: center;
+	    color: #fff;
+	    font-family: 'Open Sans', sans-serif;
+	    font-weight: 400;
+	  }
+
+.title {
+	     float: left !important;
+	     font-family: 'Open Sans', sans-serif;
+	     font-weight: 700;
+	     font-size: 22px;
+	     margin: 10px 0 !important;
+	     width: 100%;
+	   }
+
+.post {
+		text-align: justify;
+		font-family: 'Lato', sans-serif !important;
+	  }
+
+.post_about {
+	          margin-top: 10px !important;
+	          border-top: 5px solid #e4e4e4;
+	          padding-top: 10px;
+	          color: #6B8FD4;
+			}
+
+.post_about span {
+	               color: #000;
+	               margin-right: 3px;
+}
+
+.pagination {
+	          margin-top: 0px !important;
+	          margin-bottom: 40px !important;
+			}
+
+.right {
+	     text-align: right !important;
+	     font-size: 30px;
+	   }
+
+.post img {
+	        margin: 0 auto !important;
+	        float: none !important;
+	        opacity: 0.8;
+	        padding: 0 auto !important;
+	    
+		  }
+
+.post img:hover {
+	              opacity: 1;
+				}
+
+@media(max-width: 1000px)
+{
+	.sidebar {
+		       width: 100% !important;
+		       height: 60px !important;
+		       padding-top: 0;
+			 }
+	.logo {
+			width: 30px !important;
+			height: 30px !important;
+			z-index: 10;
+			float: left !important;
+		  }
+	.logo img {
+		        width: 100% !important;
+		        height: 100% !important;
+		        border-radius: 15px;
+		        z-index: 10;
+			  }	
+	.slogan {
+		      display: none;
+			}
+	.seperator {
+		         display: none;
+			   }
+
+	.nav_menu {
+		        display: none;
+	}
+	.wrapper {
+		       margin-top: 80px;
+		       padding: 0 20px !important;
+	}
+	.search {
+		      display: none;
+	}
+	.social {
+		      top: 100px;
+		      display: none;
+			}
+	.author {
+		      float: left !important;
+		      width: auto !important;
+			}
+	.tags {
+		    float: left !important;
+		    margin-left: 20px !important; 
+		  }
+	.post_about {
+		          padding-bottom: 20px !important;
+				}
+	.date {
+		    border-top-right-radius: 10px;
+		  }
+	.right {
+		     display: none !important;
+		   }
+	.title {
+			 text-align: center;
+		   }
+	.post img {
+		        width: 100%;  
+		        opacity: 1;
+			  }
+}
