@@ -6,7 +6,9 @@ class category extends Model {
 
 	protected $table= 'category';
 
-	protected $fillable = ['name', 'description'];
+	public $timestamps = false;
+	
+	protected $fillable = ['name', 'description', 'menu'];
 
 	protected $hidden = ['id'];
 

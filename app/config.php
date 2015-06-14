@@ -8,8 +8,8 @@ class config extends Model {
 
 	public $timestamps = false;
 
-	protected $fillable = ['title', 'description', 'author'];
+	protected $fillable = ['title', 'description', 'author', 'facebook', 'google', 'twitter', 'youtube', 'posts', 'metakey', 'theme'];
 
-	protected $hidden = ['facebook', 'google', 'twitter', 'youTube'];
+	protected $hidden = ['id'];
 
 }

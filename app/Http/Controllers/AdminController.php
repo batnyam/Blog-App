@@ -5,25 +5,53 @@ use Blog\user as User;
 use Blog\category as Category;
 use Blog\post as Post;
 use Request;
+use View;
 
 class AdminController extends Controller {
 
-	public function admin(){
-		$config = Config::find(1);
-		if ( $config == null ) return view('admin.install');
-			return view('admin.admin')->withConfig($config);
+	public function __construct(){
+		$con = Config::all();
+		$config = $con[0];
+		View::share('config', $config);
 	}
 
-	public function install(){
+	public function admin(){
+		$config = Config::all();
+		if ( $config == null ) return view('admin.install-user');
+			return view('admin.admin');
+	}
+
+	public function installUser(){
 		$input = Request::all();
-		return $input;
+		User::create($input);
+		return view('admin.install-config');
+	}
+
+	public function installConfig(){
+		$input = Request::all();
+		$user = User::all();
+		$input['author'] = $user[0]['name'];
+		$input['theme'] = 'default';
+		Config::create($input);
+		return view('admin.install-category');
+	}
+
+	public function installcat(){
+		return view('admin.install-category');
+	}
+
+	public function installCategory(){
+		$input = Request::all();
+		Category::create($input);
+		$con = Config::all();
+		$config = $con[0];
+		return view('admin.admin');
 	}
 
 	public function config(){
 		$users = User::all();
-		$config = Config::find(1);
 		$user = $users->lists('name', 'name');
-		return view('admin.config')->withConfig($config)->withUser($user);
+		return view('admin.config')->withUser($user);
 	}
 
 	public function configUpdate(){
@@ -47,7 +75,7 @@ class AdminController extends Controller {
 		$cat = $category->lists('name', 'name');
 		$user = $users->lists('name', 'name');
 
-		return view('admin.writepost')->withConfig($config)->withCat($cat)->withUsers($user);
+		return view('admin.writepost')->withCat($cat)->withUsers($user);
 	}
 
 	public function addPost(){
@@ -61,25 +89,25 @@ class AdminController extends Controller {
 	public function editPost(){
 		$config = Config::find(1);
 		$posts = Post::all();
-		return view('admin.editpost')->withPosts($posts)->withConfig($config);
+		return view('admin.editpost')->withPosts($posts);
 	}
 
 	public function manageCat(){
 		$config = Config::find(1);
 		$category = Category::all();
-		return view('admin.managecat')->withConfig($config)->withCategory($category);
+		return view('admin.managecat')->withCategory($category);
 	}
 
 	public function manageUsers(){
 		$config = Config::find(1);
 		$users = User::all();
-		return view('admin.manageusers')->withConfig($config)->withUsers($users);
+		return view('admin.manageusers')->withUsers($users);
 	}
 
 	public function postRead($id){
 		$post = Post::find(1);
 		$config = Config::find(1);
-		return view('single')->withConfig($config)->withPost($post);
+		return view('single')->withPost($post);
 	}
 
 	public function page($page){

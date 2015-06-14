@@ -6,7 +6,8 @@
 				<div class="col-md-8 post-write form-group">
 
 					{!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Post Title']) !!}
-					{!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Write a post...']) !!}	
+					<pre>Length: <span id="length"></span></pre>
+					{!! Form::textarea('content', null, ['class' => 'form-control post-entry', 'placeholder' => 'Write a post...', 'onkeyup' => 'getLength(this.value)' ]) !!}	
 
 				</div>
 
@@ -14,12 +15,10 @@
 					<span class="title">Post options</span>
 					<div class="form-group">
 						{!! Form::select('category', $cat, '', array('class' => 'form-control')) !!}
-					
 						{!! Form::select('author', $users, '', array('class' => 'form-control')) !!}
-
 						{!! Form::text('tag', null, ['class' => 'form-control', 'placeholder' => 'Write a Tags']) !!}
-						{!! Form::textarea('metakey', null, ['class' => 'form-control textar', 'placeholder' => 'Write a Metakey']) !!}
-						
+						{!! Form::textarea('metakey', $config->metakey, ['class' => 'form-control textar', 'placeholder' => 'Write a Metakey']) !!}
+						{!! Form::text('excerpt', null, ['class' => 'form-control', 'placeholder' => 'Post Intro']) !!}
 						{!! Form::select('status', array('1' => 'Publish', '0' => 'Unpublish'), '', array('class' => 'form-control')) !!}
 					</div>
 
@@ -28,3 +27,9 @@
 
 				{!! Form::close() !!}
 		</div>
+
+		<script>
+			function getLength(value){
+				document.getElementById('length').innerHTML = value.length;
+			}
+		</script>

@@ -23,7 +23,8 @@ class Config extends Migration {
 			$table->string('twitter');
 			$table->string('google');
 			$table->integer('posts');
-			$table->integer('metakey');
+			$table->string('metakey');
+			$table->string('theme');
 		});
 
 		Schema::table('configuration', function(Blueprint $table)
@@ -39,7 +40,7 @@ class Config extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('configuration');
 	}
 
 }
