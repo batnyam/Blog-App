@@ -30,7 +30,7 @@
 
 	<body class="col-md-6 pull-left col-md-offset-3">
 		<h1>Install - New Category</h1>
-		{!! Form::open(array('url' => '/admin/install-category')) !!}
+		{!! Form::open(array('url' => '/install/install-category')) !!}
 		
 			{!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Category name']) !!}
 			{!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Category description']) !!}

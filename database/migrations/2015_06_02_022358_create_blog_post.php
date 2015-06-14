@@ -16,7 +16,7 @@ class CreateBlogPost extends Migration {
 			$table->increments('id');
 			$table->integer('Status');
 			$table->string('Category', 30);
-			$table->string('Title', 30);
+			$table->string('Title', 60);
 			$table->longText('Content');
 			$table->string('Author', 30);
 			$table->timestamp('created_at');

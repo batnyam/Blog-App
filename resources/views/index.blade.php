@@ -19,16 +19,7 @@
 				@endforeach
 
 				<div class="col-md-12 pagenav">
-					<div class="col-md-6 pagination">
-						<li class=""><a href="#">&laquo;</a></li>
-						<li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">&raquo;</a></li>
-					</div>
-
-					<div class="col-md-6 right">
-						<a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
-					</div>
+					<?php echo $posts->render() ?>
 				</div>
 			</div>
 		</section>

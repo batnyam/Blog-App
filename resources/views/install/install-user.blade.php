@@ -26,7 +26,7 @@
 
 	<body class="col-md-6 pull-left col-md-offset-3">
 		<h1>Install - New User</h1>
-		{!! Form::open(array('url' => '/admin/install-user')) !!}
+		{!! Form::open(array('url' => '/install/install-user')) !!}
 
 			{!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Full Name']) !!}
 			{!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'E-Mail Address']) !!}

@@ -12,10 +12,11 @@ class IndexController extends Controller {
 		View::share('config', $config);
 	}
 
-	public function Index(){
+	public function index(){
 		$con = Config::all();
 		$config = $con[0];
-		$posts = Post::all()->sortByDesc('id')->take($config->posts);
+		$posts = Post::paginate($config->posts);
+		//$posts = Post::all()->sortByDesc('id')->take($config->posts);
 		return view('index')->withPosts($posts);
 	}
 }

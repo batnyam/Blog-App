@@ -6,7 +6,7 @@
 				<div class="col-md-8 post-write form-group">
 
 					{!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Post Title']) !!}
-					<pre>Length: <span id="length"></span></pre>
+					<pre>Length: <span id="length">0</span></pre>
 					{!! Form::textarea('content', null, ['class' => 'form-control post-entry', 'placeholder' => 'Write a post...', 'onkeyup' => 'getLength(this.value)' ]) !!}	
 
 				</div>

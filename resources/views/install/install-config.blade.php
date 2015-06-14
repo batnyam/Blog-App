@@ -26,7 +26,7 @@
 
 	<body class="col-md-6 pull-left col-md-offset-3">
 		<h1>Install - New Configuration</h1>
-		{!! Form::open(array('url' => '/admin/install-config')) !!}
+		{!! Form::open(array('url' => '/install/install-config')) !!}
 
 			{!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Site Title']) !!}
 			{!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Site Description']) !!}

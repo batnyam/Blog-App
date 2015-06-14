@@ -14,10 +14,6 @@ use Blog\config as Config;
 
 Route::get('/', 'IndexController@index');
 Route::get('/admin', 'AdminController@admin');
-Route::post('/admin/install-config', 'AdminController@installConfig');
-Route::post('/admin/install-user', 'AdminController@installUser');
-Route::get('/admin/install-category', 'AdminController@installcat');
-Route::post('/admin/install-category', 'AdminController@installCategory');
 Route::get('/admin/config', 'AdminController@config');
 Route::get('/admin/write-post', 'AdminController@writePost');
 Route::get('/admin/edit-post', 'AdminController@editPost');
@@ -27,6 +23,15 @@ Route::post('/admin/write-post', 'AdminController@addPost');
 Route::post('/admin/config', 'AdminController@configUpdate');
 Route::get('/postread-{id}', 'AdminController@postRead');
 Route::get('/page-{page}', 'AdminController@page');
+
+
+/* Install Routes */
+Route::post('/install/install-user', 'InstallController@installUser');
+Route::post('/install/install-config', 'InstallController@installConfig');
+Route::post('/install/install-category', 'AdminController@installCategory');
+
+
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
