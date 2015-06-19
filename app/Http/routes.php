@@ -12,6 +12,7 @@ use Blog\config as Config;
 |
 */
 
+Route::post('/admin/login', 'AdminController@login');
 Route::get('/', 'IndexController@index');
 Route::get('/admin', 'AdminController@admin');
 Route::get('/admin/config', 'AdminController@config');
@@ -23,7 +24,7 @@ Route::post('/admin/write-post', 'AdminController@addPost');
 Route::post('/admin/config', 'AdminController@configUpdate');
 Route::get('/postread-{id}', 'AdminController@postRead');
 Route::get('/page-{page}', 'AdminController@page');
-
+Route::get('/logout', 'AdminController@logout');
 
 /* Install Routes */
 Route::post('/install/install-user', 'InstallController@installUser');
@@ -31,6 +32,11 @@ Route::post('/install/install-config', 'InstallController@installConfig');
 Route::post('/install/install-category', 'AdminController@installCategory');
 
 
+/* Show Category News*/
+Route::get('/cat/{name}', 'AdminController@readCat');
+
+/* Show Author News */
+Route::get('/author/{name}', 'AdminController@readAuthor');
 
 
 Route::controllers([

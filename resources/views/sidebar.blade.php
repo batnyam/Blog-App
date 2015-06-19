@@ -20,7 +20,10 @@
 	
 		<ul>
 			<a href="#"><li>Homepage</li></a>
-			<a href="#"><li>Contact us</li></a>
+			@foreach($cats as $cat)
+				<a href="{{ URL::to('/cat/tech') }}"><li>{{ $cat->name }}</li></a>
+			@endforeach
+			
 		</ul>
 
 	</div>

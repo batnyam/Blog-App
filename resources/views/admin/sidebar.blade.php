@@ -18,7 +18,6 @@
 	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 	</head>
-
 	<body class="container-fluid">
 
 		<div class="col-md-2 sidebar">
@@ -35,7 +34,8 @@
 				<a href="{{ URL::to('/') }}" target="_blank"><li>Visit Site</li></a>
 			</div>
 
+			<h1></h1>
 			<div class="col-md-12 navbar-bottom">
-				<i class="fa fa-power-off"></i>
+				<a href="{{ URL::to('/logout') }}" ><i class="fa fa-power-off"></i></a>
 			</div>
 		</div>

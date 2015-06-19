@@ -5,11 +5,14 @@ use Blog\user as User;
 use Blog\category as Category;
 use Blog\post as Post;
 use Request;
+use Hash;
 
 class InstallController extends Controller {
 
 	public function installUser(){
 		$input = Request::all();
+		$pass = Hash::make($input['password']);
+		$input['password'] = $pass;
 		User::create($input);
 		return view('install.install-config');
 	}
