@@ -8,18 +8,28 @@ use View;
 class IndexController extends Controller {
 
 	public function __construct(){
-		$con = Config::all();
-		$config = $con[0];
+		$config = Config::all()->get(0);
+		$cats = Category::where('menu', '=', '1')->get();
 		View::share('config', $config);
+		View::share('cats', $cats);
 	}
 
 	public function index(){
-		$con = Config::all();
+		$config = Config::all()->get(0);
 		$cats = Category::where('menu', '=', '1')->get();
-		$config = $con[0];
-		$posts = Post::paginate($config->posts);
-		//$posts = Post::all()->sortByDesc('id')->take($config->posts);
-		return view('index')->withPosts($posts)->withCats($cats);
+		$posts = Post::where('status', '=', '1')->orderBy('created_at', 'desc')->paginate($config->posts);
+		return view('index')->withPosts($posts);
+	}
+
+	public function postRead($id){
+		$post = Post::find($id);
+		return view('single')->withPost($post);
+	}
+	
+	public function readAuthor($name){
+		$config = Config::all()->get(0);
+		$posts = Post::where('author', '=', $name)->paginate($config->posts);
+		return view('index')->withPosts($posts);
 	}
 }
 

@@ -9,7 +9,8 @@
 					<div class="col-md-12 post">{{ $post->Content }}</div>
 
 					<div class="col-md-12 post_about">
-						<div class="col-md-3 author"><span class="glyphicon glyphicon-user"></span>{{ $post->Author }}</div>
+						<?php $author = '/author/'.$post->Author; ?>
+						<div class="col-md-3 author"><a href="{{ URL::to($author) }}"><span class="glyphicon glyphicon-user"></span>{{ $post->Author }}</a></div>
 						<div class="col-md-3 tags"><span class="glyphicon glyphicon-tag"></span>{{ $post->tag }}</div>
 					</div>
 				</div>		

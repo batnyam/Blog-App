@@ -5,13 +5,13 @@ use Blog\user as User;
 use Blog\category as Category;
 use Blog\post as Post;
 use Request;
-use Hash;
+use Crypt;
 
 class InstallController extends Controller {
 
 	public function installUser(){
 		$input = Request::all();
-		$pass = Hash::make($input['password']);
+		$pass = Crypt::encrypt($input['password']);
 		$input['password'] = $pass;
 		User::create($input);
 		return view('install.install-config');
@@ -26,15 +26,10 @@ class InstallController extends Controller {
 		return view('install.install-category');
 	}
 
-	public function installcat(){
-		return view('install.install-category');
-	}
-
 	public function installCategory(){
 		$input = Request::all();
 		Category::create($input);
-		$con = Config::all();
-		$config = $con[0];
+		$config = Config::all()->get(0);
 		$directory = app_path();
 		$dir = str_replace("app", "resources\\views\delete", $directory);
 		File::deleteDirectory($dir);

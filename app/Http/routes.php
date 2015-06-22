@@ -1,6 +1,5 @@
 <?php
 
-use Blog\config as Config;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,34 +11,48 @@ use Blog\config as Config;
 |
 */
 
-Route::post('/admin/login', 'AdminController@login');
+/* Front-End Routes */
 Route::get('/', 'IndexController@index');
+Route::get('/postread-{id}', 'IndexController@postRead');
+Route::get('/author/{name}', 'IndexController@readAuthor');
+
+/* Category Controller */
+Route::get('/cat/{name}', 'CategoryController@readCat');
+
+/* AdminController Controller */
 Route::get('/admin', 'AdminController@admin');
-Route::get('/admin/config', 'AdminController@config');
-Route::get('/admin/write-post', 'AdminController@writePost');
-Route::get('/admin/edit-post', 'AdminController@editPost');
-Route::get('/admin/category', 'AdminController@manageCat');
-Route::get('/admin/users', 'AdminController@manageUsers');
-Route::post('/admin/write-post', 'AdminController@addPost');
-Route::post('/admin/config', 'AdminController@configUpdate');
-Route::get('/postread-{id}', 'AdminController@postRead');
-Route::get('/page-{page}', 'AdminController@page');
+Route::post('/admin/login', 'AdminController@login');
 Route::get('/logout', 'AdminController@logout');
 
-/* Install Routes */
-Route::post('/install/install-user', 'InstallController@installUser');
-Route::post('/install/install-config', 'InstallController@installConfig');
-Route::post('/install/install-category', 'AdminController@installCategory');
+Route::group(array( 'prefix' => 'admin', 'middleware' => 'auth' ), function(){
+	
+	Route::get('home', 'AdminController@home');
+	/* Config Controller */
+	Route::post('config', 'ConfigController@configUpdate');
+	Route::get('config', 'ConfigController@config');
 
+	/* Post Controller  */
+	Route::get('write-post', 'PostController@writePost');
+	Route::post('write-post', 'PostController@addPost');
+	Route::get('edit-post', 'PostController@editPost');
+	Route::get('editpost-{id}', 'PostController@edit');
+	Route::post('editpost-{id}', 'PostController@updatePost');
+	/* User Controller */
+	Route::get('users', 'AdminController@manageUsers');
 
-/* Show Category News*/
-Route::get('/cat/{name}', 'AdminController@readCat');
+	/* Category Controller */
+	Route::get('category', 'CategoryController@manageCat');
+});
 
-/* Show Author News */
-Route::get('/author/{name}', 'AdminController@readAuthor');
+Route::group(array ( 'prefix' => 'install' ), function(){
+	
+	/* Install Routes */
+	Route::post('install-user', 'InstallController@installUser');
+	Route::post('install-config', 'InstallController@installConfig');
+	Route::post('install-category', 'InstallController@installCategory');
 
+});	
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+Route::get('/auth/login', function(){
+	return '404';
+});

@@ -11,6 +11,14 @@
 		<link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
 		<link href="{{ asset('/css/font-awesome.min.css') }}" rel="stylesheet">
 		<link href="{{ asset('/css/admin-style.css') }}" rel="stylesheet">
+		<script src="{{ asset('/js/jquery-2.0.3.js') }}"></script>
+		<script src="{{ asset('/ckeditor/ckeditor.js') }}"></script>
+		<script src="{{ asset('/ckeditor/adapters/jquery.js') }}"></script>
+		<script>
+			$(document).ready(function(){
+				$('#editor1').ckeditor();
+			});
+		</script>
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	    <!--[if lt IE 9]>
@@ -25,7 +33,7 @@
 			<div class="col-md-12 desc">{{ $config->description }}</div>
 
 			<div class="col-md-12 button-group">
-				<a href="{{ URL::to('/admin') }}"><li>Home</li></a>
+				<a href="{{ URL::to('/admin/home') }}"><li>Home</li></a>
 				<a href="{{ URL::to('/admin/write-post') }}"><li>Write a Post</li></a>
 				<a href="{{ URL::to('/admin/edit-post') }}"><li>Edit a Post</li></a>
 				<a href="{{ URL::to('/admin/category') }}"><li>Manage a Category</li></a>
