@@ -15,6 +15,7 @@
 Route::get('/', 'IndexController@index');
 Route::get('/postread-{id}', 'IndexController@postRead');
 Route::get('/author/{name}', 'IndexController@readAuthor');
+Route::post('/comment-{id}', 'IndexController@comment');
 
 /* Category Controller */
 Route::get('/cat/{name}', 'CategoryController@readCat');

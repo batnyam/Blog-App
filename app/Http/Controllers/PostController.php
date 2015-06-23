@@ -31,7 +31,7 @@ class PostController extends Controller {
 	}
 
 	public function editPost(){
-		$posts = Post::all();
+		$posts = Post::orderBy('created_at', 'desc')->get();
 		return view('admin.editpost')->withPosts($posts);
 	}
 

@@ -4,6 +4,9 @@ use Blog\config as Config;
 use Blog\post as Post;
 use Blog\category as Category;
 use View;
+use Request;
+use Blog\comment as Comment;
+use Redirect;
 
 class IndexController extends Controller {
 
@@ -18,18 +21,35 @@ class IndexController extends Controller {
 		$config = Config::all()->get(0);
 		$cats = Category::where('menu', '=', '1')->get();
 		$posts = Post::where('status', '=', '1')->orderBy('created_at', 'desc')->paginate($config->posts);
+		$posts->setPath('/blog/laravel/public/');
 		return view('index')->withPosts($posts);
 	}
 
 	public function postRead($id){
 		$post = Post::find($id);
-		return view('single')->withPost($post);
+		$comments = Comment::where('post_id', '=', $id)->orderBy('created_at', 'desc')->get();
+		return view('single')->withPost($post)->withComments($comments);
 	}
 	
 	public function readAuthor($name){
 		$config = Config::all()->get(0);
-		$posts = Post::where('author', '=', $name)->paginate($config->posts);
+		$posts = Post::where('author', '=', $name)->orderBy('created_at', 'desc')->paginate($config->posts);
+		$posts->setPath('/blog/laravel/public/');
 		return view('index')->withPosts($posts);
+	}
+
+	public function breadcrumb(){
+		$url = Request::getRequestUri();
+		return $url;
+	}
+
+	public function comment($id){
+		$ip = Request::getClientIP();
+		$input = Request::all();
+		$input['author_ip'] = $ip;
+		$input['post_id'] = $id;	
+		Comment::create($input);
+		return Redirect::to('/postread-'.$id);
 	}
 }
 
