@@ -55,7 +55,25 @@ class AdminController extends Controller {
 
 	public function manageUsers(){
 		$users = User::all();
-		return view('admin.manageusers')->withUsers($users);
+		$user = null;
+		return view('admin.manageusers')->withUsers($users)->withUser($user);
+	}
+
+	public function editUser($id){
+		$user = User::find($id);
+		return view('admin.manageusers')->withUser($user);
+	}
+
+	public function updateUser($id){
+		$user = User::find($id);
+		$input = Request::all();
+		$user->name = $input['name'];
+		$user->email = $input['email'];
+		$user->password = Crypt::encrypt($input['password']);
+		$user->Save();
+		$user = null;
+		$users = User::all();
+		return view('admin.manageusers')->withUser($user)->withUsers($users);
 	}
 
 	

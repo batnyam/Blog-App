@@ -15,8 +15,7 @@
 					<span class="col-md-3 mail">{{ $post->Category }}</span>
 					<span class="col-md-2 name">{{ $post->Author }}</span>
 					<span class="col-md-2 edit">@if ( $post->Status == 1 ) {{ 'Published' }} @else {{ 'Unpublished' }} @endif</span>
-					<?php $link = '/admin/editpost-'.$post->id; ?>
-					<span class="col-md-1 edit"><a href="{{ URL::to($link) }}">Edit</a></span>
+					<span class="col-md-1 edit"><a href="{{ URL::to('admin/editpost-'.$post->id) }}">Edit</a></span>
 					<span class="border"></span>
 				@endforeach
 			</div>

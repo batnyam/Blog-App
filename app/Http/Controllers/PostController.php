@@ -15,11 +15,12 @@ class PostController extends Controller {
 	}
 
 	public function writePost(){
+		$post = null;
 		$category = Category::all();
 		$users = User::all();
 		$cat = $category->lists('name', 'name');
 		$user = $users->lists('name', 'name');
-		return view('admin.writepost')->withCat($cat)->withUsers($user);
+		return view('admin.writepost')->withCat($cat)->withUsers($user)->withPost($post);
 	}
 
 	public function addPost(){

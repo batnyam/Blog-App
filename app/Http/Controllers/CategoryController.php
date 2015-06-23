@@ -1,9 +1,10 @@
 <?php namespace Blog\Http\Controllers;
 
 use Blog\config as Config;
-use Blog\post as Post;
 use Blog\category as Category;
 use View;
+use Request;
+
 
 class CategoryController extends Controller {
 
@@ -11,7 +12,7 @@ class CategoryController extends Controller {
 		$config = Config::all()->get(0);
 		$cats = Category::all();
 		View::share('config', $config);
-		View::share('cats', $cats);
+		View::share('category', $cats);
 	}
 
 	public function readCat($name){
@@ -21,8 +22,25 @@ class CategoryController extends Controller {
 	}
 
 	public function manageCat(){
+		$cat = null;
 		$category = Category::all();
-		return view('admin.managecat')->withCategory($category);
+		return view('admin.managecat')->withCat($cat);
+	}
+
+	public function editCat($id){
+		$cat = Category::find($id);
+		return view('admin.managecat')->withCat($cat);
+	}
+
+	public function updateCat($id){
+		$input = Request::all();
+		$cat = Category::find($id);
+		$cat->name = $input['name'];
+		$cat->description = $input['description'];
+		$cat->menu = $input['menu'];
+		$cat->Save();
+		$cat = null;
+		return view('admin.manageCat')->withCat($cat);
 	}
 }
 

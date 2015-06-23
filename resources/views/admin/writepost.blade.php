@@ -27,8 +27,7 @@
 
 					{!! Form::close() !!}
 				@else
-					<?php $url = 'admin/editpost-'.$post->id; ?>
-					{!! Form::open(['url' => $url]) !!}
+					{!! Form::open(['url' => 'admin/editpost-'.$post->id]) !!}
 					<div class="col-md-8 post-write form-group">
 
 						{!! Form::text('title', $post->Title, ['class' => 'form-control', 'placeholder' => 'Post Title']) !!}

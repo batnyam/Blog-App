@@ -39,9 +39,13 @@ Route::group(array( 'prefix' => 'admin', 'middleware' => 'auth' ), function(){
 	Route::post('editpost-{id}', 'PostController@updatePost');
 	/* User Controller */
 	Route::get('users', 'AdminController@manageUsers');
+	Route::get('edituser-{id}', 'AdminController@editUser');
+	Route::post('edituser-{id}', 'AdminController@updateUser');
 
 	/* Category Controller */
 	Route::get('category', 'CategoryController@manageCat');
+	Route::get('catedit-{id}', 'CategoryController@editCat');
+	Route::post('catedit-{id}', 'CategoryController@updateCat');
 });
 
 Route::group(array ( 'prefix' => 'install' ), function(){

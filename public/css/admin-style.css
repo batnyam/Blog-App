@@ -141,8 +141,13 @@ button.save {
 	float: left;
 }
 
-form.category {
-	padding: 10px 0;
+.category {
+	padding: 0 !important;
+	margin-top: 10px;
+}
+
+.category .btn {
+	margin-top: 10px;
 }
 
 .category textarea {
