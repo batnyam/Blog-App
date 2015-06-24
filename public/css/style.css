@@ -210,8 +210,72 @@ a:hover {
 	              opacity: 1;
 				}
 
-@media(max-width: 1000px)
-{
+.comments {
+	padding: 0;
+}
+
+.comments .comment {
+	float: left;
+	background: #cecece;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+.comment .name {
+	width: auto;
+	float: left;
+	padding-left: 10px;
+}
+
+.comment .date {
+	width: auto;
+	float: left;
+	padding-left: 10px;
+	font-size: 10px;
+	color: #3498db;
+	text-align: left;
+	padding-top: 0;
+	margin-top: 0;
+}
+
+.comment span.comment {
+	width: auto;
+	float: left;
+	padding-top: 0;
+	margin: 0;
+	text-align: left;
+}
+
+.comment .avatar {
+	float: left;
+}
+
+.comment img {
+	width: 90px;
+	height: 90px;
+	float: left;
+}
+
+.comment-form {
+	padding: 0;
+}
+
+.comment-form input {
+	margin-bottom: 10px;
+}
+
+.comment-form .btn {
+	margin-top: 10px;
+}
+
+.comment-form .comment-guest, .comment-mail {
+	width: 50% !important;
+}
+
+.comment-form textarea {
+	height: 110px !important;
+}
+@media(max-width: 1000px){
 	.sidebar {
 		       width: 100% !important;
 		       height: 60px !important;

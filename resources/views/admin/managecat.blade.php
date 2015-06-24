@@ -20,7 +20,7 @@
 				<span class="col-md-1 edit"></span>
 				<span class="border"></span>
 
-				@foreach ( $category as $cat )
+				@foreach ( $cats as $cat )
 					<span class="col-md-4 name">{{ $cat->name }}</span>
 					<span class="col-md-7 mail">{{ $cat->description }}</span>
 					<span class="col-md-1 edit"><a href="{{ URL::to('/admin/catedit-'.$cat->id) }}">Edit</a></span>

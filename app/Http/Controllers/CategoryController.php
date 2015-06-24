@@ -24,7 +24,6 @@ class CategoryController extends Controller {
 
 	public function manageCat(){
 		$cat = null;
-		$category = Category::all();
 		return view('admin.managecat')->withCat($cat);
 	}
 

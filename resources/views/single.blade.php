@@ -15,7 +15,7 @@
 					</div>
 				</div>	
 
-				<div class="col-md-12">
+				<div class="col-md-12 comment-form">
 					{!! Form::open(array('url' => '/comment-'.$post->id)) !!}
 						{!! Form::text('author_name', 'Guest', array('class' => 'comment-guest form-control', 'placeholder' => 'Name')) !!}
 						{!! Form::text('author_email', '',array('class' => 'comment-mail form-control', 'placeholder' => 'E-Mail')) !!}
@@ -29,8 +29,14 @@
 
 				<div class="col-md-12 comments">
 					@foreach($comments as $comment)
-						<span class="name">{{ $comment->author_name }}</span>
-						<span class="comment">{{ $comment->comment }}</span>
+						<div class="col-md-12 comment">
+							<span class="avatar"><img src="{{ asset('/img/avatar.jpg') }}" ></span>
+							<span class="name">{{ $comment->author_name }}</span>
+							<br>
+							<span class="date">{{ $comment->created_at->format('M d, Y') }}</span>
+							<br>
+							<span class="comment">{{ $comment->comment }}</span>
+						</div>
 					@endforeach
 				</div>
 			</div>
