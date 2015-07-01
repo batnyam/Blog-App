@@ -8,7 +8,7 @@
 						<div class="col-md-2 date">{{ $post->created_at->format('M d, Y') }}</div>
 						<?php $link = '/postread-'.$post->id; ?>
 						<div class="col-md-12 title"><a href="{{ URL::to($link) }}">{{ $post->Title }}</a></div>
-						<div class="col-md-12 post">{{ $post->Content }}</div>
+						<div class="col-md-12 post"><?php echo $post->Content; ?></div>
 
 						<div class="col-md-12 post_about">
 							<div class="col-md-3 author"><span class="glyphicon glyphicon-user"></span>

@@ -10,6 +10,11 @@ class category extends Model {
 	
 	protected $fillable = ['name', 'description', 'menu'];
 
-	protected $hidden = ['id'];
+	protected $hidden = ['id', 'created_at', 'update_at'];
+
+	public function post(){
+		return $this->hasMany('Post');
+	}
+	
 
 }

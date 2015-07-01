@@ -11,14 +11,14 @@ use Redirect;
 class IndexController extends Controller {
 
 	public function __construct(){
-		$config = Config::all()->get(0);
+		$config = Config::first();
 		$cats = Category::where('menu', '=', '1')->get();
 		View::share('config', $config);
 		View::share('cats', $cats);
 	}
 
 	public function index(){
-		$config = Config::all()->get(0);
+		$config = Config::first();
 		$cats = Category::where('menu', '=', '1')->get();
 		$posts = Post::where('status', '=', '1')->orderBy('created_at', 'desc')->paginate($config->posts);
 		$posts->setPath('/blog/laravel/public/');
@@ -32,7 +32,7 @@ class IndexController extends Controller {
 	}
 	
 	public function readAuthor($name){
-		$config = Config::all()->get(0);
+		$config = Config::first();
 		$posts = Post::where('author', '=', $name)->orderBy('created_at', 'desc')->paginate($config->posts);
 		$posts->setPath('/blog/laravel/public/');
 		return view('index')->withPosts($posts);

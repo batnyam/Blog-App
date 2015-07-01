@@ -9,14 +9,14 @@ use Blog\post as Post;
 class CategoryController extends Controller {
  
 	public function __construct(){
-		$config = Config::all()->get(0);
+		$config = Config::first();
 		$cats = Category::all();
 		View::share('config', $config);
 		View::share('cats', $cats);
 	}
 
 	public function readCat($name){
-		$config = Config::all()->get(0);
+		$config = Config::first();
 		$posts = Post::where('category', '=', $name)->orderBy('created_at', 'desc')->paginate($config->posts);
 		$posts->setPath('/blog/laravel/public/');
 		return view('index')->withPosts($posts);

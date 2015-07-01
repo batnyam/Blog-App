@@ -29,7 +29,7 @@ class InstallController extends Controller {
 	public function installCategory(){
 		$input = Request::all();
 		Category::create($input);
-		$config = Config::all()->get(0);
+		$config = Config::first();
 		$directory = app_path();
 		$dir = str_replace("app", "resources\\views\delete", $directory);
 		File::deleteDirectory($dir);

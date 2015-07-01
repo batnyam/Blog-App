@@ -3,7 +3,7 @@
 <html lang="en">
 	<head>
 
-		<title>Koding Blog</title>
+		<title>{{ $config->title }}</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 

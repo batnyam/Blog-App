@@ -10,7 +10,7 @@ use Request;
 class PostController extends Controller {
 
 	public function __construct(){
-		$config = Config::all()->get(0);
+		$config = Config::first();
 		View::share('config', $config);
 	}
 

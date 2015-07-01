@@ -8,11 +8,12 @@ use Request;
 use View;
 use Auth;
 use Crypt;
+use File;
 
 class AdminController extends Controller {
 
 	public function __construct(){
-		$config = Config::all()->get(0);
+		$config = Config::first();
 		$cat = Category::where('menu', '=', '1')->get();
 		View::share('config', $config);
 		View::share('cats', $cat);
@@ -76,5 +77,12 @@ class AdminController extends Controller {
 		return view('admin.manageusers')->withUser($user)->withUsers($users);
 	}
 
+	public function media(){
+		$url = public_path();
+		$url = $url.'\media';
+		$files = File::allFiles($url);
+		echo $files[0];
+		echo '<img src="'.$files[0].'">';
+	}
 	
 }

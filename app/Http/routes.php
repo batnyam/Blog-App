@@ -47,6 +47,8 @@ Route::group(array( 'prefix' => 'admin', 'middleware' => 'auth' ), function(){
 	Route::get('category', 'CategoryController@manageCat');
 	Route::get('catedit-{id}', 'CategoryController@editCat');
 	Route::post('catedit-{id}', 'CategoryController@updateCat');
+
+	Route::get('media', 'AdminController@media');
 });
 
 Route::group(array ( 'prefix' => 'install' ), function(){

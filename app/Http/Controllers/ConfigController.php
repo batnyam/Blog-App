@@ -8,12 +8,12 @@ use Blog\config as Config;
 class ConfigController extends Controller {
 
 	public function __construct(){
-		$config = Config::all()->get(0);
+		$config = Config::first();
 		View::share('config', $config);
 	}
 
 	public function configUpdate(){
-		$config = Config::all()->get(0);
+		$config = Config::first();
 
 		$users = User::all();
 		$user = $users->lists('name', 'name');
@@ -35,7 +35,7 @@ class ConfigController extends Controller {
 	}
 
 	public function config(){
-		$config = Config::all()->get(0);
+		$config = Config::first();
 		View::share('config', $config);
 		$users = User::all();
 		$user = $users->lists('name', 'name');
