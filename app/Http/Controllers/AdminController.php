@@ -9,6 +9,7 @@ use View;
 use Auth;
 use Crypt;
 use File;
+use URL;
 
 class AdminController extends Controller {
 
@@ -78,11 +79,17 @@ class AdminController extends Controller {
 	}
 
 	public function media(){
-		$url = public_path();
-		$url = $url.'\media';
+		$base_url = URL::to('/');
+		$url = public_path().'\media';		
 		$files = File::allFiles($url);
-		echo $files[0];
-		echo '<img src="'.$files[0].'">';
+		for( $i = 0; $i < sizeof($files); $i++ )
+		{
+			$new_var = str_replace('\\', '/', $files[$i]);
+			$var = strpos($new_var, 'media');
+			$new_var_1 = substr($new_var, $var);
+			$img = $base_url.'/'.$new_var_1;
+			echo '<img src="'.$img.'" width="200px" height="200px">';
+		}
 	}
 	
 }
