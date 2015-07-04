@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-	
+
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<title>Admin</title>
@@ -11,13 +11,26 @@
 		<link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
 		<link href="{{ asset('/css/font-awesome.min.css') }}" rel="stylesheet">
 		<link href="{{ asset('/css/admin-style.css') }}" rel="stylesheet">
-		<script src="{{ asset('/js/jquery-2.0.3.js') }}"></script>
+		<script src="{{ asset('/js/jquery-2.1.4.min.js') }}"></script>
+		<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('/ckeditor/ckeditor.js') }}"></script>
 		<script src="{{ asset('/ckeditor/adapters/jquery.js') }}"></script>
+
 		<script>
 			$(document).ready(function(){
 				$('#editor1').ckeditor();
 			});
+
+			$('#media img').click(function(){
+				var img_url = $(this)[0].currentSrc;
+				var editor = $('#editor1').val();
+				var img = "<img src='"+img_url+"' >";
+				var value = editor+img;
+				$('#editor1').val(value);
+				$('#media img').css('border', '0');
+				$(this).css('border', '4px solid #2e8ece');
+			});
+
 		</script>
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

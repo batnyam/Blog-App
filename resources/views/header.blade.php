@@ -17,7 +17,7 @@
 		<link src="{{ asset('/fonts/glyphicons-halflings-regular.ttf') }}" />
 
 		<!-- IMPORT JS FILES -->
-		<script src="{{ asset('/js/jquery-min.js') }}"></script>
+		<script src="{{ asset('/js/jquery-2.1.4.min.js') }}"></script>
 		<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 
 	</head>

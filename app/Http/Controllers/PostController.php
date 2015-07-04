@@ -6,6 +6,8 @@ use Blog\category as Category;
 use Blog\user as User;
 use View;
 use Request;
+use URL;
+use File;
 
 class PostController extends Controller {
 
@@ -20,7 +22,22 @@ class PostController extends Controller {
 		$users = User::all();
 		$cat = $category->lists('name', 'name');
 		$user = $users->lists('name', 'name');
-		return view('admin.writepost')->withCat($cat)->withUsers($user)->withPost($post);
+
+		//Get the media folders file
+		$images = array();
+		$base_url = URL::to('/');
+		$url = public_path().'\media';
+		$files = File::allFiles($url);
+		for( $i = 0; $i < sizeof($files); $i++ )
+		{
+			$new_var = str_replace('\\', '/', $files[$i]);
+			$var = strpos($new_var, 'media');
+			$new_var_1 = substr($new_var, $var);
+			$img = $base_url.'/'.$new_var_1;
+			array_push($images, $img);
+		}
+
+		return view('admin.writepost')->withCat($cat)->withUsers($user)->withPost($post)->withImages($images);
 	}
 
 	public function addPost(){

@@ -26,7 +26,7 @@ Route::post('/admin/login', 'AdminController@login');
 Route::get('/logout', 'AdminController@logout');
 
 Route::group(array( 'prefix' => 'admin', 'middleware' => 'auth' ), function(){
-	
+
 	Route::get('home', 'AdminController@home');
 	/* Config Controller */
 	Route::post('config', 'ConfigController@configUpdate');
@@ -47,18 +47,16 @@ Route::group(array( 'prefix' => 'admin', 'middleware' => 'auth' ), function(){
 	Route::get('category', 'CategoryController@manageCat');
 	Route::get('catedit-{id}', 'CategoryController@editCat');
 	Route::post('catedit-{id}', 'CategoryController@updateCat');
-
-	Route::get('media', 'AdminController@media');
 });
 
 Route::group(array ( 'prefix' => 'install' ), function(){
-	
+
 	/* Install Routes */
 	Route::post('install-user', 'InstallController@installUser');
 	Route::post('install-config', 'InstallController@installConfig');
 	Route::post('install-category', 'InstallController@installCategory');
 
-});	
+});
 
 Route::get('/auth/login', function(){
 	return '404';
