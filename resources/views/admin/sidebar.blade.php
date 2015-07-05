@@ -21,14 +21,29 @@
 				$('#editor1').ckeditor();
 			});
 
+			var img_url = '';
 			$('#media img').click(function(){
-				var img_url = $(this)[0].currentSrc;
-				var editor = $('#editor1').val();
-				var img = "<img src='"+img_url+"' >";
-				var value = editor+img;
-				$('#editor1').val(value);
+				img_url = $(this)[0].currentSrc;
+				var img_height = $(this)[0].height;
+				var img_width = $(this)[0].width;
+
+				$('#height').val(img_height);
+				$('#width').val(img_width);
+
 				$('#media img').css('border', '0');
 				$(this).css('border', '4px solid #2e8ece');
+				console.log(img_url);
+			});
+
+			$('#insertImg').click(function(){
+				console.log(img_url);
+				var editor = $('#editor1').val();
+				img_height = $('#height').val();
+				img_width = $('#width').val();
+				var img = "<img src='"+img_url+"' width='"+img_width+"px' height='"+img_height+"px' >";
+				var value = editor+img;
+				$('#editor1').val(value);
+				$('#media').modal('hide');
 			});
 
 		</script>

@@ -58,8 +58,10 @@
 						@foreach($images as $img)
 							<img src="{{ $img }}" width="200px" height="200px" alt="Media" />
 						@endforeach
-
+						<input type="text" id="width" >
+						<input type="text" id="height" >
 						<button type="button" data-dismiss="modal">Close</button>
+						<button type="button" id="insertImg">Insert</button>
 					</div>
 				</div>
 		</div>
