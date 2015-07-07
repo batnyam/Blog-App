@@ -48,8 +48,25 @@ class PostController extends Controller {
 	}
 
 	public function editPost(){
-		$posts = Post::orderBy('created_at', 'desc')->get();
+		$posts = Post::where('Status', '=', '1')->orderBy('created_at', 'desc')->get();
+		$trashs = Post::where('Status', '=', '0')->orderBy('created_at', 'desc')->get();
+		return view('admin.editpost')->withPosts($posts)->withTrashs($trashs);
+	}
+
+	public function trashPost($id){
+		$post = Post::find($id);
+		$post->Status = 0;
+		$post->save();
+		$posts = Post::all();
 		return view('admin.editpost')->withPosts($posts);
+	}
+
+	public function deletePost($id){
+		$post = Post::find($id);
+		$post->delete();
+		$posts = Post::where('Status', '=', '1')->orderBy('created_at', 'desc')->get();
+		$trashs = Post::where('Status', '=', '0')->orderBy('created_at', 'desc')->get();
+		return view('admin.editposts')->withPosts($posts)->withTrashs('trashs');
 	}
 
 	public function edit($id){
@@ -58,11 +75,26 @@ class PostController extends Controller {
 		$category = Category::all();
 		$cat = $category->lists('name', 'name');
 		$user = $users->lists('name', 'name');
-		return view('admin.writepost')->withPost($post)->withCat($cat)->withUsers($user);
+
+		//Get the media folders file
+		$images = array();
+		$base_url = URL::to('/');
+		$url = public_path().'\media';
+		$files = File::allFiles($url);
+		for( $i = 0; $i < sizeof($files); $i++ )
+		{
+			$new_var = str_replace('\\', '/', $files[$i]);
+			$var = strpos($new_var, 'media');
+			$new_var_1 = substr($new_var, $var);
+			$img = $base_url.'/'.$new_var_1;
+			array_push($images, $img);
+		}
+
+		return view('admin.writepost')->withPost($post)->withCat($cat)->withUsers($user)->withImages($images);
 	}
 
 	public function updatePost($id){
-		$posts = Post::all();
+		$posts = Post::all()-;
 		$post = Post::find($id);
 		$input = Request::all();
 		$post->Status = $input['status'];
@@ -74,7 +106,8 @@ class PostController extends Controller {
 		$post->metakey = $input['metakey'];
 		$post->excerpt = $input['excerpt'];
 		$post->save();
-		return view('admin.editpost')->withPosts($posts);
+		$trashs = Post::where('Status', '=', '0')->orderBy('created_at', 'desc')->get();
+		return view('admin.editpost')->withPosts($posts)->withTrashs($trashs);
 	}
 
 }

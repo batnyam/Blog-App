@@ -4,6 +4,7 @@ use Blog\config as Config;
 use Blog\user as User;
 use Blog\category as Category;
 use Blog\post as Post;
+use Blog\comment as Comment;
 use Request;
 use View;
 use Auth;
@@ -22,6 +23,11 @@ class AdminController extends Controller {
 
 	public function home(){
 		return view('admin.admin');
+	}
+
+	public function count(){
+		$count = Comment::count();
+		return $count;
 	}
 
 	public function admin(){

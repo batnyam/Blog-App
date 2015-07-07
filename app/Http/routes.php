@@ -17,6 +17,8 @@ Route::get('/postread-{id}', 'IndexController@postRead');
 Route::get('/author/{name}', 'IndexController@readAuthor');
 Route::post('/comment-{id}', 'IndexController@comment');
 
+
+Route::get('/count', 'AdminController@count');
 /* Category Controller */
 Route::get('/cat/{name}', 'CategoryController@readCat');
 
@@ -38,6 +40,8 @@ Route::group(array( 'prefix' => 'admin', 'middleware' => 'auth' ), function(){
 	Route::get('edit-post', 'PostController@editPost');
 	Route::get('editpost-{id}', 'PostController@edit');
 	Route::post('editpost-{id}', 'PostController@updatePost');
+	Route::get('delete-post-{id}', 'PostController@deletePost');
+	Route::get('trash-post-{id}', 'PostController@trashPost');
 	/* User Controller */
 	Route::get('users', 'AdminController@manageUsers');
 	Route::get('edituser-{id}', 'AdminController@editUser');
