@@ -83,6 +83,32 @@ html, body {
 	font-size: 14px;
 }
 
+.content .modal {
+	width: 855px;
+  float: left;
+  margin: 30px auto;
+}
+
+.content .modal-content {
+	float:left;
+}
+
+.content .modal .content {
+	float: left;
+	width: 650px;
+	padding-bottom: 20px;
+}
+
+.content .modal .option {
+	float: left;
+	width: 200px;
+	margin-top: 20px;
+}
+
+.content .modal .upload {
+	margin-top: 20px;
+}
+
 .content input {
 	margin-bottom: 10px;
 	float: left;

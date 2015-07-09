@@ -8,7 +8,8 @@ use View;
 use Request;
 use URL;
 use File;
-
+use Input;
+use Form;
 class PostController extends Controller {
 
 	public function __construct(){
@@ -94,7 +95,7 @@ class PostController extends Controller {
 	}
 
 	public function updatePost($id){
-		$posts = Post::all()-;
+		$posts = Post::all();
 		$post = Post::find($id);
 		$input = Request::all();
 		$post->Status = $input['status'];
@@ -108,6 +109,13 @@ class PostController extends Controller {
 		$post->save();
 		$trashs = Post::where('Status', '=', '0')->orderBy('created_at', 'desc')->get();
 		return view('admin.editpost')->withPosts($posts)->withTrashs($trashs);
+	}
+
+	public function import(){
+		$files = Input::file('image');
+		$name = $files->getClientOriginalName();
+		$path = public_path().'\media';
+		$files->move($path, $name);
 	}
 
 }

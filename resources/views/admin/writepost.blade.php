@@ -55,13 +55,25 @@
 
 				<div class="modal fade" id="media" role="dialog" tabindex="-1">
 					<div class="modal-content">
-						@foreach($images as $img)
-							<img src="{{ $img }}" width="200px" height="200px" alt="Media" />
-						@endforeach
-						<input type="text" id="width" >
-						<input type="text" id="height" >
-						<button type="button" data-dismiss="modal">Close</button>
-						<button type="button" id="insertImg">Insert</button>
+						<div class="content">
+							@foreach($images as $img)
+								<img src="{{ $img }}" width="200px" height="200px" alt="Media" />
+							@endforeach
+						</div>
+
+						<div class="option">
+							<input type="text" id="width" >
+							<input type="text" id="height" >
+							<button type="button" data-dismiss="modal">Close</button>
+							<button type="button" id="insertImg">Insert</button>
+
+							<div class="upload">
+								{!! Form::open(array('url' => 'admin/import-image', 'method' => 'post', 'enctype' => 'multipart/form-data', 'files' => true)) !!}
+									{!! Form::file('image') !!}
+									{!! Form::submit('Upload', ['class' => 'btn btn-primary save']) !!}
+								{!! Form::close() !!}
+							</div>
+						</div>
 					</div>
 				</div>
 		</div>
