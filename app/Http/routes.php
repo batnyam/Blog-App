@@ -42,6 +42,7 @@ Route::group(array( 'prefix' => 'admin', 'middleware' => 'auth' ), function(){
 	Route::post('editpost-{id}', 'PostController@updatePost');
 	Route::get('delete-post-{id}', 'PostController@deletePost');
 	Route::get('trash-post-{id}', 'PostController@trashPost');
+	Route::post('import-image-{id}', 'PostController@importID');
 	Route::post('import-image', 'PostController@import');
 
 	/* User Controller */

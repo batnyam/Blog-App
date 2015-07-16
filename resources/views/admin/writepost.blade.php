@@ -34,7 +34,7 @@
 						{!! Form::text('title', $post->Title, ['class' => 'form-control', 'placeholder' => 'Post Title']) !!}
 						<pre>Length: <span id="length">0</span></pre>
 						{!! Form::textarea('content', $post->Content, ['class' => 'post-entry', 'id' => 'editor1']) !!}
-						<span class="btn btn-success">Image</span>
+						<button class="btn btn-success" type="button" data-toggle="modal" data-target="#media">Image</button>
 					</div>
 
 					<div class="col-md-4 post-options">
@@ -68,7 +68,11 @@
 							<button type="button" id="insertImg">Insert</button>
 
 							<div class="upload">
-								{!! Form::open(array('url' => 'admin/import-image', 'method' => 'post', 'enctype' => 'multipart/form-data', 'files' => true)) !!}
+								<?php
+									if($post) $url = 'admin/import-image-'.$post->id;
+									else $url = 'admin/import-image';
+								?>
+								{!! Form::open(array('url' => $url, 'method' => 'post', 'enctype' => 'multipart/form-data', 'files' => true)) !!}
 									{!! Form::file('image') !!}
 									{!! Form::submit('Upload', ['class' => 'btn btn-primary save']) !!}
 								{!! Form::close() !!}

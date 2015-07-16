@@ -10,6 +10,8 @@ use URL;
 use File;
 use Input;
 use Form;
+use Redirect;
+
 class PostController extends Controller {
 
 	public function __construct(){
@@ -111,13 +113,21 @@ class PostController extends Controller {
 		return view('admin.editpost')->withPosts($posts)->withTrashs($trashs);
 	}
 
+	public function importID($id){
+		$files = Input::file('image');
+		$name = $files->getClientOriginalName();
+		$path = public_path().'\media';
+		$files->move($path, $name);
+		return Redirect::to('admin/editpost-'.$id);
+	}
+
 	public function import(){
 		$files = Input::file('image');
 		$name = $files->getClientOriginalName();
 		$path = public_path().'\media';
 		$files->move($path, $name);
+		return Redirect::to('admin/write-post');
 	}
-
 }
 
 ?>
